@@ -162,7 +162,7 @@ public class FloatingActionMenu extends ViewGroup {
         mLabelsSingleLine = attr.getBoolean(R.styleable.FloatingActionMenu_menu_labels_singleLine, false);
         mLabelsEllipsize = attr.getInt(R.styleable.FloatingActionMenu_menu_labels_ellipsize, 0);
         mLabelsMaxLines = attr.getInt(R.styleable.FloatingActionMenu_menu_labels_maxLines, -1);
-        mMenuFabSize = attr.getInt(R.styleable.FloatingActionMenu_menu_fab_size, FloatingActionButton.TYPE_NORMAL);
+        mMenuFabSize = attr.getInt(R.styleable.FloatingActionMenu_menu_fab_type, FloatingActionButton.TYPE_NORMAL);
         mLabelsStyle = attr.getResourceId(R.styleable.FloatingActionMenu_menu_labels_style, 0);
         String customFont = attr.getString(R.styleable.FloatingActionMenu_menu_labels_customFont);
         try {

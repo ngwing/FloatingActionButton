@@ -62,7 +62,7 @@
             <enum name="marquee" value="4" />
         </attr>
         <attr name="menu_labels_maxLines" format="integer" />
-        <attr name="menu_fab_size" format="enum">
+        <attr name="menu_fab_type" format="enum">
             <enum name="normal" value="0" />
             <enum name="mini" value="1" />
         </attr>
