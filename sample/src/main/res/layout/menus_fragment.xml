@@ -126,7 +126,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        fab:menu_fab_size="mini"
+        fab:menu_fab_type="mini"
         fab:menu_colorNormal="#1565C0"
         fab:menu_colorPressed="#2272CD"
         fab:menu_colorRipple="#62B2FF">
@@ -161,7 +161,7 @@
         android:layout_marginTop="75dp"
         android:layout_marginLeft="10dp"
         android:src="@drawable/ic_edit"
-        fab:fab_size="mini"
+        fab:fab_type="mini"
         fab:fab_colorNormal="#F50057"
         fab:fab_colorPressed="#E8004A"
         fab:fab_colorRipple="#C20024"
@@ -183,28 +183,28 @@
         android:elevation="6dp"
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_singleLine="true"
-        fab:menu_fab_size="mini"
+        fab:menu_fab_type="mini"
         fab:menu_openDirection="down">
 
         <com.github.clans.fab.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            fab:fab_size="mini"
+            fab:fab_type="mini"
             fab:fab_label="Menu item 1" />
 
         <com.github.clans.fab.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            fab:fab_size="mini"
+            fab:fab_type="mini"
             fab:fab_label="Menu item 2" />
 
         <com.github.clans.fab.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            fab:fab_size="mini"
+            fab:fab_type="mini"
             fab:fab_label="@string/lorem_ipsum" />
 
     </com.github.clans.fab.FloatingActionMenu>
@@ -228,7 +228,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            fab:fab_size="mini"
+            fab:fab_type="mini"
             fab:fab_label="Disabled" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -236,7 +236,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            fab:fab_size="mini"
+            fab:fab_type="mini"
             fab:fab_label="Remove button" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -244,7 +244,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            fab:fab_size="mini"
+            fab:fab_type="mini"
             fab:fab_label="Restore Button" />
 
     </com.github.clans.fab.FloatingActionMenu>
@@ -266,21 +266,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            fab:fab_size="mini"
+            fab:fab_type="mini"
             fab:fab_label="Menu item 1" />
 
         <com.github.clans.fab.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            fab:fab_size="mini"
+            fab:fab_type="mini"
             fab:fab_label="Menu item 2" />
 
         <com.github.clans.fab.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            fab:fab_size="mini"
+            fab:fab_type="mini"
             fab:fab_label="@string/lorem_ipsum" />
 
     </com.github.clans.fab.FloatingActionMenu>
