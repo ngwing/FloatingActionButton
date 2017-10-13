@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Outline;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
@@ -176,8 +177,11 @@ public class FloatingActionButton extends ImageButton {
     }
 
     private int getCircleSize() {
-        return getResources().getDimensionPixelSize(mFabSize == SIZE_NORMAL
-                ? R.dimen.fab_size_normal : R.dimen.fab_size_mini);
+        int width = getMeasuredWidth() - calculateShadowWidth();
+        if (mProgressBarEnabled) {
+            width -= mProgressWidth * 2;
+        }
+        return width;
     }
 
     private int calculateMeasuredWidth() {
@@ -185,7 +189,7 @@ public class FloatingActionButton extends ImageButton {
         if (mProgressBarEnabled) {
             width += mProgressWidth * 2;
         }
-        return width;
+        return getMeasuredWidth();
     }
 
     private int calculateMeasuredHeight() {
@@ -193,7 +197,7 @@ public class FloatingActionButton extends ImageButton {
         if (mProgressBarEnabled) {
             height += mProgressWidth * 2;
         }
-        return height;
+        return getMeasuredHeight();
     }
 
     int calculateShadowWidth() {
@@ -222,8 +226,8 @@ public class FloatingActionButton extends ImageButton {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(calculateMeasuredWidth(), calculateMeasuredHeight());
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        setMeasuredDimension(calculateMeasuredWidth(), calculateMeasuredHeight());
     }
 
     @Override
@@ -712,7 +716,7 @@ public class FloatingActionButton extends ImageButton {
 
         @Override
         public int getOpacity() {
-            return 0;
+           return PixelFormat.UNKNOWN;
         }
     }
 
@@ -1124,7 +1128,7 @@ public class FloatingActionButton extends ImageButton {
 
     /**
      * Sets the shadow color and radius to mimic the native elevation.
-     *
+     * <p>
      * <p><b>API 21+</b>: Sets the native elevation of this view, in pixels. Updates margins to
      * make the view hold its position in layout across different platform versions.</p>
      */
