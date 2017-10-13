@@ -64,7 +64,7 @@ public class MenusFragment extends Fragment {
         fab3 = (FloatingActionButton) view.findViewById(R.id.fab3);
 
         final FloatingActionButton programFab1 = new FloatingActionButton(getActivity());
-        programFab1.setButtonSize(FloatingActionButton.SIZE_MINI);
+        programFab1.setButtonSize(FloatingActionButton.TYPE_MINI);
         programFab1.setLabelText(getString(R.string.lorem_ipsum));
         programFab1.setImageResource(R.drawable.ic_edit);
         menuRed.addMenuButton(programFab1);

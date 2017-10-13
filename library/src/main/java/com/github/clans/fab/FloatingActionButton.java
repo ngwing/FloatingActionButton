@@ -39,12 +39,13 @@ import android.widget.TextView;
 
 public class FloatingActionButton extends ImageButton {
 
-    public static final int SIZE_NORMAL = 0;
-    public static final int SIZE_MINI = 1;
+    public static final int TYPE_NORMAL = 0;
+    public static final int TYPE_MINI = 1;
 
-    int mFabSize;
+    int mFabType;
     boolean mShowShadow;
     int mShadowColor;
+    int mFabSize = 0;
     int mShadowRadius = Util.dpToPx(getContext(), 4f);
     int mShadowXOffset = Util.dpToPx(getContext(), 1f);
     int mShadowYOffset = Util.dpToPx(getContext(), 3f);
@@ -124,10 +125,11 @@ public class FloatingActionButton extends ImageButton {
         mColorRipple = attr.getColor(R.styleable.FloatingActionButton_fab_colorRipple, 0x99FFFFFF);
         mShowShadow = attr.getBoolean(R.styleable.FloatingActionButton_fab_showShadow, true);
         mShadowColor = attr.getColor(R.styleable.FloatingActionButton_fab_shadowColor, 0x66000000);
+        mFabSize = attr.getDimensionPixelSize(R.styleable.FloatingActionButton_fab_size, 10);
         mShadowRadius = attr.getDimensionPixelSize(R.styleable.FloatingActionButton_fab_shadowRadius, mShadowRadius);
         mShadowXOffset = attr.getDimensionPixelSize(R.styleable.FloatingActionButton_fab_shadowXOffset, mShadowXOffset);
         mShadowYOffset = attr.getDimensionPixelSize(R.styleable.FloatingActionButton_fab_shadowYOffset, mShadowYOffset);
-        mFabSize = attr.getInt(R.styleable.FloatingActionButton_fab_size, SIZE_NORMAL);
+        mFabType = attr.getInt(R.styleable.FloatingActionButton_fab_type, TYPE_NORMAL);
         mLabelText = attr.getString(R.styleable.FloatingActionButton_fab_label);
         mShouldProgressIndeterminate = attr.getBoolean(R.styleable.FloatingActionButton_fab_progress_indeterminate, false);
         mProgressColor = attr.getColor(R.styleable.FloatingActionButton_fab_progress_color, 0xFF009688);
@@ -176,12 +178,8 @@ public class FloatingActionButton extends ImageButton {
         mHideAnimation = AnimationUtils.loadAnimation(getContext(), resourceId);
     }
 
-    private int getCircleSize() {
-        int width = getMeasuredWidth() - calculateShadowWidth();
-        if (mProgressBarEnabled) {
-            width -= mProgressWidth * 2;
-        }
-        return width;
+    public int getCircleSize() {
+        return mFabSize;
     }
 
     private int calculateMeasuredWidth() {
@@ -189,7 +187,7 @@ public class FloatingActionButton extends ImageButton {
         if (mProgressBarEnabled) {
             width += mProgressWidth * 2;
         }
-        return getMeasuredWidth();
+        return width;
     }
 
     private int calculateMeasuredHeight() {
@@ -197,7 +195,7 @@ public class FloatingActionButton extends ImageButton {
         if (mProgressBarEnabled) {
             height += mProgressWidth * 2;
         }
-        return getMeasuredHeight();
+        return height;
     }
 
     int calculateShadowWidth() {
@@ -226,8 +224,8 @@ public class FloatingActionButton extends ImageButton {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-//        setMeasuredDimension(calculateMeasuredWidth(), calculateMeasuredHeight());
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(calculateMeasuredWidth(), calculateMeasuredHeight());
     }
 
     @Override
@@ -716,7 +714,7 @@ public class FloatingActionButton extends ImageButton {
 
         @Override
         public int getOpacity() {
-           return PixelFormat.UNKNOWN;
+            return PixelFormat.UNKNOWN;
         }
     }
 
@@ -829,21 +827,21 @@ public class FloatingActionButton extends ImageButton {
     /**
      * Sets the size of the <b>FloatingActionButton</b> and invalidates its layout.
      *
-     * @param size size of the <b>FloatingActionButton</b>. Accepted values: SIZE_NORMAL, SIZE_MINI.
+     * @param size size of the <b>FloatingActionButton</b>. Accepted values: TYPE_NORMAL, TYPE_MINI.
      */
     public void setButtonSize(int size) {
-        if (size != SIZE_NORMAL && size != SIZE_MINI) {
+        if (size != TYPE_NORMAL && size != TYPE_MINI) {
             throw new IllegalArgumentException("Use @FabSize constants only!");
         }
 
-        if (mFabSize != size) {
-            mFabSize = size;
+        if (mFabType != size) {
+            mFabType = size;
             updateBackground();
         }
     }
 
     public int getButtonSize() {
-        return mFabSize;
+        return mFabType;
     }
 
     public void setColorNormal(int color) {
@@ -1137,7 +1135,7 @@ public class FloatingActionButton extends ImageButton {
         mShadowColor = 0x26000000;
         mShadowRadius = Math.round(elevation / 2);
         mShadowXOffset = 0;
-        mShadowYOffset = Math.round(mFabSize == SIZE_NORMAL ? elevation : elevation / 2);
+        mShadowYOffset = Math.round(mFabType == TYPE_NORMAL ? elevation : elevation / 2);
 
         if (Util.hasLollipop()) {
             super.setElevation(elevation);
