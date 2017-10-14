@@ -943,6 +943,12 @@ public class FloatingActionButton extends ImageButton {
         updateBackground();
     }
 
+    public void setShadowRadiusPx(int shadowRadius) {
+        mShadowRadius = shadowRadius;
+        requestLayout();
+        updateBackground();
+    }
+
     public int getShadowRadius() {
         return mShadowRadius;
     }
