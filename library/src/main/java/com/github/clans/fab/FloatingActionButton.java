@@ -47,7 +47,7 @@ public class FloatingActionButton extends ImageButton {
     int mShadowColor;
     int mFabSize = 0;
     int mShadowRadius = Util.dpToPx(getContext(), 4f);
-    int mShadowXOffset = Util.dpToPx(getContext(), 1f);
+    int mShadowXOffset = Util.dpToPx(getContext(), 0f);
     int mShadowYOffset = Util.dpToPx(getContext(), 3f);
 
     private static final Xfermode PORTER_DUFF_CLEAR = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
@@ -975,6 +975,13 @@ public class FloatingActionButton extends ImageButton {
         updateBackground();
     }
 
+    public void setShadowXOffsetPx(int shadowXOffsetPx) {
+        mShadowXOffset = shadowXOffsetPx;
+        requestLayout();
+        updateBackground();
+    }
+
+
     public int getShadowXOffset() {
         return mShadowXOffset;
     }
@@ -1003,6 +1010,12 @@ public class FloatingActionButton extends ImageButton {
      */
     public void setShadowYOffset(float shadowYOffsetDp) {
         mShadowYOffset = Util.dpToPx(getContext(), shadowYOffsetDp);
+        requestLayout();
+        updateBackground();
+    }
+
+    public void setShadowYOffsetPx(int shadowYOffsetPx) {
+        mShadowYOffset = shadowYOffsetPx;
         requestLayout();
         updateBackground();
     }
